@@ -24,7 +24,7 @@ body {
 .hero-section-bg {
   min-height: 100vh; /* Occupy full viewport height */
   width: 100%;
-  background-image: url('/public/bg1.png'); /* Reverted: Point to public folder root */
+  background-image: url('/public/bg1ig.png'); /* Reverted: Point to public folder root */
   background-size: cover; /* Cover the entire area */
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */

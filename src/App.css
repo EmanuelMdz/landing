@@ -52,16 +52,17 @@ body {
 }
 
 .App-hero-content h1 {
-  margin: 0 0 10px 0;
+  margin: 0 0 0px 0;
   font-size: 2.8em; 
-  color: #ffffff;
+  color: #ffffffd2;
   font-weight: 600;
 }
 
-.App-hero-content .App-subtitle {
-  font-size: 1.3em;
+
+.App-hero-content .App-subtitle2 {
+  font-size: 1.1em;
   margin-bottom: 20px;
-  color: #e0e0e0; /* Ajustar si es necesario sobre la imagen parallax */
+  color: #b9b9b9; /* Ajustar si es necesario sobre la imagen parallax */
   max-width: 600px; 
 }
 
@@ -114,6 +115,34 @@ body {
   .App-hero-content {
     padding: 15px; /* Menos padding interno en móviles */
   }
+}
+
+/* Títulos con fuente Inter y estilo destacado */
+h1, h2 {
+  font-family: 'Inter', 'Inter Placeholder', sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  line-height: 1.08;
+  text-align: center;
+  color: #fff;
+  margin-top: 0;
+}
+h1 {
+  font-size: 2.3em;
+  margin-bottom: 16px;
+}
+h2 {
+  font-size: 1.5em;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+/* Logo OSM arriba */
+.osm-logo {
+  display: block;
+  margin: 32px auto 16px auto;
+  max-width: 160px;
+  height: auto;
 }
 
 /* OSM Pill Button Styles - Animated Circle Sweep */

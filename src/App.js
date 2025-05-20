@@ -14,9 +14,10 @@ function App() {
       <div className="hero-section-bg">
         {/* The App-hero-content styling will be adjusted in CSS if needed */}
         <div className="App-hero-content">
+          <img src="/OSM.png" alt="Logo OSM Outbound Sales Machine" className="osm-logo" />
           <h1>Descubre el Poder de OSM</h1>
-          <p className="App-subtitle">Transforma tus ventas con nuestra metodología probada.</p>
-          
+    
+          <p className="App-subtitle2">Un sistema diseñado para agencias y emprendedores que buscan escalar su negocio con un nuevo sistema de daquisición</p>
           <div className="video-container">
             <iframe
               width="560"

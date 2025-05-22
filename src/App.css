@@ -71,16 +71,23 @@ body {
   min-width: 120px;
   display: inline-block;
   text-align: center;
+  vertical-align: middle;
 }
 
 .typing-cursor {
   display: inline-block;
-  width: 1px;
-  margin-left: 0; /* Eliminamos el margen izquierdo */
+  width: 2px; 
+  margin-left: 2px; 
+  margin-right: 11px; 
   animation: blink 0.7s infinite;
-  color: #ed5062;
-  position: relative;
-  left: -14px; /* Movemos el cursor ligeramente a la izquierda */
+  color: #ed5062; 
+  vertical-align: middle; 
+  font-size: 0.7em;
+}
+
+.title-suffix {
+  display: inline-block;
+  vertical-align: middle; /* Ensure consistent alignment */
 }
 
 @keyframes blink {
@@ -794,4 +801,25 @@ h2 {
   padding-bottom: 50px;
   text-align: center;
   color: #e0e0e0;
+}
+
+/* Styles for Calendly Inline Widget */
+.calendly-inline-widget {
+  min-width: 320px;
+  height: 700px; /* Default height for desktop */
+  margin: 20px auto; /* Center it and add some space around it */
+  overflow: hidden; /* Prevents scrollbars unless content overflows */
+  border-radius: 8px; /* Optional: for aesthetics */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* Optional: for aesthetics */
+}
+
+/* Mobile specific styles for Calendly widget */
+@media (max-width: 767px) {
+  .calendly-inline-widget {
+    height: 80vh; /* Make height relative to viewport height */
+    /* Or a fixed max-height like: max-height: 550px; height: auto; */
+    margin: 80px 10px 10px 10px; /* Increased top margin, rest are 10px */
+    /* overflow-y: auto; /* Allow vertical scroll within the widget if content is too tall */
+    /* The Calendly widget itself should handle internal scrolling if its content overflows its iframe */
+  }
 }

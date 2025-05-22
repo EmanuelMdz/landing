@@ -11,7 +11,7 @@ function App() {
   const [wordIndex, setWordIndex] = useState(0);
   const [isTyping, setIsTyping] = useState(true);
   
-  const words = ['Poder', 'Alcance', 'Precisión'];
+  const words = ['Poder', 'Alcance', 'Impacto'];
   const reasons = [
     'No estás llegando a suficientes prospectos calificados',
     'Tus mensajes no están generando el interés suficiente',
@@ -117,9 +117,11 @@ function App() {
         <div className="App-hero-content">
           <img src="/OSM.png" alt="Logo OSM Outbound Sales Machine" className="osm-logo" />
           <h1>
-  Descubre el <span className="typing-text">{text}</span>
-  <span className="typing-cursor">|</span>de OSM
-</h1>
+            <span className="title-line-one">Descubre el</span>
+            <span className="title-line-two">
+              <span className="typing-text">{text}</span><span className="typing-cursor">|</span><span className="title-suffix">de&nbsp;OSM</span>
+            </span>
+          </h1>
           <p className="App-subtitle2">Un sistema diseñado para agencias y emprendedores que buscan escalar su negocio sin ads ni contenido diario</p>
 
           {/* Fake Player limpio */}
@@ -147,19 +149,19 @@ function App() {
               </div>
             )}
           </div>
-                    <button
-  className="osm-pill-btn"
-  onClick={() => window.open('https://calendly.com/osm-meet/meet-reconocimiento-osm-clon', '_blank')}
->
-  <span className="btn-text">Agendar llamada</span>
-  <span className="arrow-circle">
-    <span className="arrow-icon">
-      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-        <path d="M6 4.5L12 9L6 13.5" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
-      </svg>
-    </span>
-  </span>
-</button>
+          <button
+            className="osm-pill-btn"
+            onClick={() => window.open('https://calendly.com/osm-meet/meet-reconocimiento-osm-clon', '_blank')}
+          >
+            <span className="btn-text">Agendar llamada</span>
+            <span className="arrow-circle">
+              <span className="arrow-icon">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <path d="M6 4.5L12 9L6 13.5" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </span>
+            </span>
+          </button>
 
           {/* Sección Esto es para vos si */}
           <div className="para-vos-si">
@@ -243,26 +245,25 @@ function App() {
         </section>
         
         <button
-  className="osm-pill-btn"
-  onClick={() => window.open('https://calendly.com/osm-meet/meet-reconocimiento-osm-clon', '_blank')}
->
+          className="osm-pill-btn"
+          onClick={() => window.open('https://calendly.com/osm-meet/meet-reconocimiento-osm-clon', '_blank')}
+        >
 
   
-  <span className="btn-text">Agendar llamada</span>
-  <span className="arrow-circle">
-    <span className="arrow-icon">
-      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-        <path d="M6 4.5L12 9L6 13.5" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
-      </svg>
-    </span>
-  </span>
-</button>
+          <span className="btn-text">Agendar llamada</span>
+          <span className="arrow-circle">
+            <span className="arrow-icon">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M6 4.5L12 9L6 13.5" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </span>
+          </span>
+        </button>
       </main>
       {/* Principio del widget integrado de Calendly */}
       <div 
         className="calendly-inline-widget" 
         data-url="https://calendly.com/osm-meet/meet-reconocimiento-osm-clon?hide_gdpr_banner=1&background_color=1a1a1a&text_color=ffffff&primary_color=ed5062" 
-        style={{ minWidth: '320px', height: '700px' }}
       ></div>
       {/* Final del widget integrado de Calendly */}
       <footer className="footer">

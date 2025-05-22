@@ -70,12 +70,15 @@ body {
 .video-container {
   position: relative;
   width: 100%;
-  max-width: 720px; 
-  padding-bottom: 56.25%; 
-  height: 0;
+  max-width: 720px;
+  aspect-ratio: 16/9;
+  background: #fff;
+  border-radius: 16px;
   overflow: hidden;
-  border-radius: 12px; 
-  margin-bottom: 30px; 
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .video-container iframe {
@@ -84,8 +87,105 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  border: none; 
+  border: none;
+  border-radius: 16px;
 }
+
+.video-thumbnail {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+}
+
+.video-thumb-bg {
+  width: 100%;
+  height: 100%;
+  background: #F3F3F3;
+  border-radius: 16px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.video-thumb-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+  display: block;
+  z-index: 1;
+}
+
+.play-btn {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+  z-index: 2;
+  transition: transform 0.2s;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.247);
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  overflow: visible;
+}
+
+.play-btn svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.play-btn:focus {
+  outline: none;
+}
+
+.play-btn:hover {
+  transform: translate(-50%, -50%) scale(1.08);
+  filter: brightness(1.1);
+}
+
+
+
+.video-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+  display: block;
+}
+
+.play-btn {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+  z-index: 2;
+  transition: transform 0.2s;
+}
+
+.play-btn:hover {
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
 
 
 
@@ -94,6 +194,436 @@ body {
   transform: translateY(-2px); 
 }
 
+
+/* Estilos para la sección 'Esto es para vos si' */
+.para-vos-si {
+  width: 100%;
+  max-width: 800px;
+  margin: 40px auto 0;
+  text-align: left;
+  color: #e0e0e0;
+}
+
+.section-title {
+  font-size: 1.8em;
+  color: #ffffffd2;
+  margin-bottom: 20px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 600px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.checklist li {
+  position: relative;
+  padding-left: 28px;
+  width: auto;
+  display: inline-flex;
+  align-items: center;
+  text-align: left;
+  line-height: 1.5;
+  color: #b9b9b9;
+  font-size: 1.1em;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.checklist li:before {
+  content: "✓";
+  position: relative;
+  left: 0;
+  margin-right: 8px;
+  color: #4CAF50;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .para-vos-si {
+    padding: 0 15px;
+  }
+  
+  .checklist {
+    grid-template-columns: 1fr;
+  }
+  
+  .section-title {
+    font-size: 1.6em;
+  }
+}
+
+/* Estilos para la sección ¿Por qué no estás agendando? */
+.agendando-section {
+  padding: 56px 40px;
+  background-color: #000000;
+  color: #e0e0e0;
+  position: relative;
+  overflow: hidden;
+}
+
+.agendando-section .container {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.agendando-content {
+  background-color: #111111;
+  border-radius: 12px;
+  padding: 40px;
+  padding-bottom: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.agendando-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #8A2BE2, #FF4500);
+}
+
+.agendando-text {
+  font-size: 1.1em;
+  line-height: 1.4;
+  margin-bottom: 20px;
+  color: #e0e0e0;
+  font-weight: 600;
+}
+
+.agendando-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 25px 0;
+}
+
+.agendando-list li {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 12px;
+  font-size: 1.05em;
+  color: #b9b9b9;
+}
+
+/* Estilos para la rotación de razones */
+.rotating-reason {
+  min-height: 60px;
+  position: relative;
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+
+.reason-text {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.reason-text p {
+  margin: 0;
+  font-size: 1.1em;
+  line-height: 1.6;
+  color: #b9b9b9;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateY(20px);
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+  transition: all 0.5s ease-in-out;
+  text-align: center;
+  font-weight: 300;
+}
+
+.reason-text p.reason-active {
+  opacity: 1;
+  transform: translate(-50%, -50%) translateY(0);
+}
+
+.reason-text p.reason-enter {
+  opacity: 0;
+  transform: translate(-50%, -50%) translateY(20px);
+  animation: fadeInUp 0.5s forwards;
+}
+
+.reason-text p.reason-exit {
+  opacity: 1;
+  transform: translate(-50%, -50%) translateY(0);
+  animation: fadeOut 0.5s forwards;
+}
+
+.reason-text p.reason-hidden {
+  opacity: 0;
+  transform: translate(-50%, -50%) translateY(20px);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) translateY(0);
+  }
+}
+
+/* Estilos para el Roadmap */
+#osm-roadmap {
+  padding: 10px 20px;
+  background-color: #000000;
+  color: #e0e0e0;
+}
+
+.roadmap-title {
+  font-size: 2.5em;
+  text-align: center;
+  margin-bottom: 60px;
+  color: #ffffffd2;
+  font-weight: 600;
+}
+
+.roadmap-container {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.road-path {
+  display: none; /* Eliminamos el camino para un diseño más limpio */
+}
+
+.roadmap-steps {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1; /* Reducimos el z-index para que esté por debajo de los pasos */
+}
+
+.roadmap-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 23%;
+  position: relative;
+  margin: 0;
+  transition: all 0.3s ease-in-out;
+  cursor: default;
+  z-index: 2; /* Aseguramos que los pasos estén por encima de la línea */
+}
+
+.roadmap-step:hover {
+  transform: translateY(-5px);
+}
+
+/* Eliminamos el escalonado para un diseño más limpio y centrado */
+.roadmap-step:nth-child(odd),
+.roadmap-step:nth-child(even) {
+  margin-top: 0;
+}
+
+.step-number {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 3;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.roadmap-step:hover .step-number {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Paleta de colores que coincide con el logo OSM */
+.roadmap-step:nth-child(1) .step-number {
+  background: linear-gradient(135deg, #ed5062, #6A5ACD); /* Morado/violeta del logo */
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3);
+}
+
+.roadmap-step:nth-child(2) .step-number {
+  background: linear-gradient(135deg, #FF8C00, #f64789); /* Naranja/rojo de la llama */
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(255, 69, 0, 0.3);
+}
+
+.roadmap-step:nth-child(3) .step-number {
+  background: linear-gradient(135deg, #f64789, #8A2BE2); /* Morado oscuro a morado claro */
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(75, 0, 130, 0.3);
+}
+
+.roadmap-step:nth-child(4) .step-number {
+  background: linear-gradient(135deg, #ed5062, #FF8C00); /* Rojo a naranja de la llama */
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(252, 76, 12, 0.3);
+}
+
+.step-content {
+  text-align: center;
+  padding: 20px;
+  background-color: #111111;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: top;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  overflow: hidden;
+  z-index: 3; /* Aseguramos que el contenido esté por encima de todo */
+}
+
+.step-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(255,255,255,0.1), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+  z-index: 1;
+}
+
+.roadmap-step:hover .step-content::before {
+  transform: translateX(100%);
+}
+
+.roadmap-step:hover .step-content {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.step-content h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.3em;
+  color: #ffffffd2;
+}
+
+.step-content p {
+  margin: 0;
+  font-size: 0.95em;
+  color: #b9b9b9;
+  line-height: 1.4;
+}
+
+/* Conectores entre pasos - línea horizontal */
+.roadmap-steps::before {
+  content: '';
+  position: absolute;
+  top: 35px;
+  left: 85px;
+  right: 85px;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.2);
+  z-index: 1;
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+  .roadmap-steps {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+  
+  .roadmap-step {
+    width: 90%;
+    max-width: 350px;
+  }
+  
+  /* Ocultar la línea horizontal en móviles */
+  .roadmap-steps::before {
+    display: none;
+  }
+  
+  /* Añadir línea vertical para conectar los pasos */
+  .roadmap-steps::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+  
+  /* Ajustar el tamaño de los números para móviles */
+  .step-number {
+    width: 60px;
+    height: 60px;
+    font-size: 1.3em;
+  }
+  
+  .step-content {
+    min-height: 100px;
+  }
+  
+
+}
+
+@media (max-width: 576px) {
+  .roadmap-step {
+    width: 100%;
+  }
+  
+  .step-content h3 {
+    font-size: 1.2em;
+  }
+  
+  .step-content p {
+    font-size: 0.9em;
+  }
+}
 
 @media (max-width: 768px) {
   .App-hero-content h1 {
@@ -227,4 +757,11 @@ h2 {
 
 .osm-pill-btn:hover .arrow-icon {
   transform: translateX(2px);
+}
+
+.footer {
+  padding-top: 150px;
+  padding-bottom: 50px;
+  text-align: center;
+  color: #e0e0e0;
 }

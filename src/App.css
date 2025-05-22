@@ -52,10 +52,40 @@ body {
 }
 
 .App-hero-content h1 {
-  margin: 0 0 0px 0;
-  font-size: 2.8em; 
+  margin: 0 0 20px 0;
+  font-size: 2.8em;
   color: #ffffffd2;
   font-weight: 600;
+  min-height: 1.5em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2em;
+  line-height: 1.3;
+}
+
+.typing-text {
+  color: #ed5062;
+  font-weight: 700;
+  min-width: 120px;
+  display: inline-block;
+  text-align: center;
+}
+
+.typing-cursor {
+  display: inline-block;
+  width: 1px;
+  margin-left: 0; /* Eliminamos el margen izquierdo */
+  animation: blink 0.7s infinite;
+  color: #ed5062;
+  position: relative;
+  left: -14px; /* Movemos el cursor ligeramente a la izquierda */
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 
@@ -214,53 +244,53 @@ body {
 
 .checklist {
   list-style: none;
-  padding: 0;
-  margin: 0 auto;
-  max-width: 600px;
+  padding-left: 0;
+  margin: 0 auto; /* Centra el bloque UL */
+  max-width: 600px; /* Ajusta si es necesario para tu diseño */
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center; /* Alinea los LIs a la izquierda del UL */
   gap: 12px;
+  margin-top: 50px; /* Tu preferencia de margen superior */
 }
 
 .checklist li {
-  position: relative;
-  padding-left: 28px;
-  width: auto;
-  display: inline-flex;
-  align-items: center;
-  text-align: left;
-  line-height: 1.5;
-  color: #b9b9b9;
-  font-size: 1.1em;
-  margin: 0;
-  box-sizing: border-box;
+  /* La animación de pulso se mantiene */
+  display: flex; 
+  align-items: center; /* Alinea verticalmente check y texto */
+  transition: transform 0.2s ease-out;
+  margin-bottom: 10px;
+  /* width: 100%; */ /* Quitado para permitir que el 'align-items: center' del UL centre el LI */
+  /* Si se quita width: 100%, el LI se ajustará a su contenido. */
+  /* El centrado horizontal del LI lo hace el 'align-items: center' del UL. */
+  color: #b9b9b9; 
+  font-size: 1.1em; 
+  line-height: 1.5; 
 }
 
-.checklist li:before {
-  content: "✓";
-  position: relative;
-  left: 0;
-  margin-right: 8px;
-  color: #4CAF50;
-  font-weight: bold;
-  flex-shrink: 0;
+.checklist li::before {
+  content: '✓';
+  color: #28a745; /* Check verde */
+  margin-right: 10px; /* Espacio entre el check y el texto */
+  /* Quitar position:absolute y left/top si estaban */
+  /* Ajustar line-height o font-size si es necesario para alineación vertical con el texto */
+  /* Por ejemplo, podrías necesitar: line-height: inherit; o un valor específico */
+  /* También quitamos la animación de pulso individual del ::before si la tenía */
+  animation: none; /* Asegura que no herede o tenga otra animación directa */
 }
 
-@media (max-width: 768px) {
-  .para-vos-si {
-    padding: 0 15px;
-  }
-  
-  .checklist {
-    grid-template-columns: 1fr;
-  }
-  
-  .section-title {
-    font-size: 1.6em;
-  }
+.checklist li:hover {
+  transform: translateY(-3px); /* Ligero desplazamiento hacia arriba en hover */
+  /* Ya no cambia de color el texto ni el check */
+  cursor: default;
 }
+
+/* La animación de pulso general para los LI (definida en .para-vos-si .checklist li) se mantiene */
+/* @keyframes pulse-li se mantiene como estaba */
+
+/* Si la animación de pulso estaba en .checklist li::before, la eliminamos de ahí */
+/* y nos aseguramos que solo .para-vos-si .checklist li la tenga */
 
 /* Estilos para la sección ¿Por qué no estás agendando? */
 .agendando-section {

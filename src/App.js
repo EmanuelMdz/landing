@@ -7,13 +7,59 @@ import './App.css';
 function App() {
   const [currentReason, setCurrentReason] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [text, setText] = useState('');
+  const [wordIndex, setWordIndex] = useState(0);
+  const [isTyping, setIsTyping] = useState(true);
   
+  const words = ['Poder', 'Alcance', 'Precisión'];
   const reasons = [
     'No estás llegando a suficientes prospectos calificados',
     'Tus mensajes no están generando el interés suficiente',
     'No tienes un sistema automatizado para seguir con los leads',
     'Estás perdiendo oportunidades por falta de tiempo o recursos'
   ];
+  
+  // Efecto para la animación de escritura/borrado (versión refinada)
+  useEffect(() => {
+    const typingSpeed = 100;
+    const deletingSpeed = 50;
+    const pauseBeforeDelete = 4000; // Usando el valor que ajustaste (4s)
+    const pauseBetweenWords = 500;
+
+    const currentWord = words[wordIndex % words.length];
+    let timeoutId;
+
+    if (isTyping) {
+      // Estamos en fase de escritura
+      if (text !== currentWord) {
+        // Si el texto actual no es la palabra completa, seguir escribiendo
+        timeoutId = setTimeout(() => {
+          setText(prevText => currentWord.substring(0, prevText.length + 1));
+        }, typingSpeed);
+      } else {
+        // Palabra completa, esperar antes de borrar
+        timeoutId = setTimeout(() => {
+          setIsTyping(false); // Cambiar a fase de borrado
+        }, pauseBeforeDelete);
+      }
+    } else {
+      // Estamos en fase de borrado
+      if (text !== '') {
+        // Si el texto no está vacío, seguir borrando
+        timeoutId = setTimeout(() => {
+          setText(prevText => prevText.substring(0, prevText.length - 1));
+        }, deletingSpeed);
+      } else {
+        // Texto vacío, cambiar a la siguiente palabra y empezar a escribir
+        timeoutId = setTimeout(() => {
+          setIsTyping(true);
+          setWordIndex(prevWordIndex => (prevWordIndex + 1) % words.length);
+        }, pauseBetweenWords);
+      }
+    }
+
+    return () => clearTimeout(timeoutId); // Limpieza del timeout
+  }, [text, isTyping, wordIndex]); // 'words' removido de las dependencias
   
   useEffect(() => {
     let timeoutId;
@@ -33,6 +79,31 @@ function App() {
       clearTimeout(timeoutId);
     };
   }, [reasons.length]);
+
+  // useEffect para cargar el script de Calendly
+  useEffect(() => {
+    const scriptId = 'calendly-widget-script';
+    // Evitar cargar el script múltiples veces si ya existe
+    if (document.getElementById(scriptId)) {
+      return;
+    }
+
+    const script = document.createElement('script');
+    script.id = scriptId;
+    script.src = 'https://assets.calendly.com/assets/external/widget.js';
+    script.async = true;
+
+    document.body.appendChild(script);
+
+    // Limpieza opcional: remover el script si el componente se desmonta
+    return () => {
+      const existingScript = document.getElementById(scriptId);
+      if (existingScript && existingScript.parentNode) {
+        existingScript.parentNode.removeChild(existingScript);
+      }
+    };
+  }, []); // El array vacío asegura que se ejecute solo una vez (al montar)
+
   const videoId = '59F70zfn5fo';
   const videoSrc = `https://www.youtube.com/embed/${videoId}?controls=0&showinfo=0&rel=0&modestbranding=1&autoplay=1`;
   const [showVideo, setShowVideo] = React.useState(false);
@@ -45,7 +116,10 @@ function App() {
         {/* The App-hero-content styling will be adjusted in CSS if needed */}
         <div className="App-hero-content">
           <img src="/OSM.png" alt="Logo OSM Outbound Sales Machine" className="osm-logo" />
-          <h1>Descubre el Poder de OSM</h1>
+          <h1>
+  Descubre el <span className="typing-text">{text}</span>
+  <span className="typing-cursor">|</span>de OSM
+</h1>
           <p className="App-subtitle2">Un sistema diseñado para agencias y emprendedores que buscan escalar su negocio sin ads ni contenido diario</p>
 
           {/* Fake Player limpio */}
@@ -167,10 +241,13 @@ function App() {
             </div>
           </div>
         </section>
+        
         <button
   className="osm-pill-btn"
   onClick={() => window.open('https://calendly.com/osm-meet/meet-reconocimiento-osm-clon', '_blank')}
 >
+
+  
   <span className="btn-text">Agendar llamada</span>
   <span className="arrow-circle">
     <span className="arrow-icon">
@@ -181,6 +258,13 @@ function App() {
   </span>
 </button>
       </main>
+      {/* Principio del widget integrado de Calendly */}
+      <div 
+        className="calendly-inline-widget" 
+        data-url="https://calendly.com/osm-meet/meet-reconocimiento-osm-clon?hide_gdpr_banner=1&background_color=1a1a1a&text_color=ffffff&primary_color=ed5062" 
+        style={{ minWidth: '320px', height: '700px' }}
+      ></div>
+      {/* Final del widget integrado de Calendly */}
       <footer className="footer">
         <p> 2025 Ainnovate Agency. Todos los derechos reservados.</p>
       </footer>

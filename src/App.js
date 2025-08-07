@@ -151,7 +151,7 @@ function App() {
           </div>
           <button
             className="osm-pill-btn"
-            onClick={() => window.open('https://calendly.com/osm-meet/meet-reconocimiento-osm-clon', '_blank')}
+            onClick={() => window.open('https://calendly.com/osm-meet/web', '_blank')}
           >
             <span className="btn-text">Agendar llamada</span>
             <span className="arrow-circle">
@@ -246,7 +246,7 @@ function App() {
         
         <button
           className="osm-pill-btn"
-          onClick={() => window.open('https://calendly.com/osm-meet/meet-reconocimiento-osm-clon', '_blank')}
+          onClick={() => window.open('https://calendly.com/osm-meet/web', '_blank')}
         >
 
   
@@ -263,7 +263,7 @@ function App() {
       {/* Principio del widget integrado de Calendly */}
       <div 
         className="calendly-inline-widget" 
-        data-url="https://calendly.com/osm-meet/meet-reconocimiento-osm-clon?hide_gdpr_banner=1&background_color=1a1a1a&text_color=ffffff&primary_color=ed5062" 
+        data-url="https://calendly.com/osm-meet/web?hide_gdpr_banner=1&background_color=1a1a1a&text_color=ffffff&primary_color=ed5062" 
       ></div>
       {/* Final del widget integrado de Calendly */}
       <footer className="footer">

@@ -1,0 +1,6 @@
+git add . 
+git commit -m "listo" 
+git push origin main
+
+
+npm start
